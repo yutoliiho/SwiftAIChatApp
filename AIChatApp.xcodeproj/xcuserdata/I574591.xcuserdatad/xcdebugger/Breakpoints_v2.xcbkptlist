@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A9A822F7-FD04-49EB-AD2F-83ABF611D37C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B966AE6E-9A77-4200-9673-8E74176386BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AIChatApp/AIChatAPI.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "AIChatAPI"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B966AE6E-9A77-4200-9673-8E74176386BC - 92360cad13ef0628"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AIChatApp.AIChatAPI.deinit"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Desktop/AIChatApp/AIChatApp/AIChatAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "B966AE6E-9A77-4200-9673-8E74176386BC - 73d1ea1b820f12f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AIChatApp.AIChatAPI.__deallocating_deinit"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Desktop/AIChatApp/AIChatApp/AIChatAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "B966AE6E-9A77-4200-9673-8E74176386BC - f11cbf6dc9b16d31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AIChatApp.AIChatAPI.__allocating_init() -&gt; AIChatApp.AIChatAPI"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Desktop/AIChatApp/AIChatApp/AIChatAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "B966AE6E-9A77-4200-9673-8E74176386BC - b958cf35fcde9ca3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AIChatApp.AIChatAPI.init() -&gt; AIChatApp.AIChatAPI"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Desktop/AIChatApp/AIChatApp/AIChatAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "10"
+                  endingLineNumber = "10"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
