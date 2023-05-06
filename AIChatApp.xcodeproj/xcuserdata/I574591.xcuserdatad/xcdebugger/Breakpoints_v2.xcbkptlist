@@ -82,5 +82,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16FC84CD-C9FF-49B6-A2BB-88CD07137229"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AIChatApp/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getMessages(userId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "16FC84CD-C9FF-49B6-A2BB-88CD07137229 - b15d7f2bcf2132d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AIChatApp.ContentView.sendMessage(userId: Swift.Int, content: Swift.String) -&gt; ()"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Apps/AIChatApp/AIChatApp/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "430">
+               </Location>
+               <Location
+                  uuid = "16FC84CD-C9FF-49B6-A2BB-88CD07137229 - b15d7f2bcf2132d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AIChatApp.ContentView.sendMessage(userId: Swift.Int, content: Swift.String) -&gt; ()"
+                  moduleName = "AIChatApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I574591/Apps/AIChatApp/AIChatApp/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "945">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

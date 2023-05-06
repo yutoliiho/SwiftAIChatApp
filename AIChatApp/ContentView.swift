@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     let aiChatOption: AIChatOption
-    @State private var messages: [ChatMessage] = []
+    @State private var messages: [ChatMessage] = []    
     @State private var currentMessage: String = ""
     @State private var userId: Int?
     @State private var showRegistrationView: Bool = true
@@ -32,14 +32,13 @@ struct ContentView: View {
                     self.sendMessage(userId: userId, content: self.currentMessage)
                 }
             })
-
         }
         .sheet(isPresented: $showRegistrationView) {
-                   RegistrationView { registeredUserId in
-                       userId = registeredUserId
-                       showRegistrationView = false
-                   }
-               }
+            RegistrationView { registeredUserId in
+                userId = registeredUserId
+                showRegistrationView = false
+            }
+        }
     }
     
     func registerUser(username: String) {
@@ -71,21 +70,6 @@ struct ContentView: View {
         }.resume()
     }
 
-//    private func sendMessage() {
-//        // Store the user's message in a temporary variable
-//        let userMessage = currentMessage
-//
-//        // Add the user's message to the chat
-//        messages.append(ChatMessage(message: userMessage, isUser: true))
-//
-//        currentMessage = ""
-//
-//        // Call the AI chat API and add the AI's response to the messages array
-//        AIChatAPI.getAIResponse(input: userMessage) { response in
-//            messages.append(ChatMessage(message: response, isUser: false))
-//        }
-//    }
-    
     func sendMessage(userId: Int, content: String) {
         let url = URL(string: "http://localhost:3000/send_message")!
         var request = URLRequest(url: url)
