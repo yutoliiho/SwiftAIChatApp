@@ -11,8 +11,9 @@ import SwiftUI
 struct ContentView: View {
     let aiChatOption: AIChatOption
     @State private var messages: [ChatMessage] = []
-    @State private
-    var currentMessage: String = ""
+    @State private var currentMessage: String = ""
+    @State private var userId: Int?
+    @State private var showRegistrationView: Bool = true
     
     var body: some View {
         VStack {
@@ -26,24 +27,120 @@ struct ContentView: View {
             
             ChatView(messages: messages)
             
-            ChatInputView(message: $currentMessage, sendAction: sendMessage)
+            ChatInputView(message: $currentMessage, sendAction: {
+                if let userId = userId {
+                    self.sendMessage(userId: userId, content: self.currentMessage)
+                }
+            })
+
         }
+        .sheet(isPresented: $showRegistrationView) {
+                   RegistrationView { registeredUserId in
+                       userId = registeredUserId
+                       showRegistrationView = false
+                   }
+               }
     }
     
-    private func sendMessage() {
-        // Store the user's message in a temporary variable
-        let userMessage = currentMessage
-
-        // Add the user's message to the chat
-        messages.append(ChatMessage(message: userMessage, isUser: true))
-
-        currentMessage = ""
+    func registerUser(username: String) {
+        let url = URL(string: "http://localhost:3000/register")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json: [String: Any] = ["username": username]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        request.httpBody = jsonData
         
-        // Call the AI chat API and add the AI's response to the messages array
-        AIChatAPI.getAIResponse(input: userMessage) { response in
-            messages.append(ChatMessage(message: response, isUser: false))
-        }
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print(json)
+                    if let userId = json["user_id"] as? Int {
+                        print("User registered with ID: \(userId)")
+                        // Save the user ID and username for further use
+                    }
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }.resume()
     }
+
+//    private func sendMessage() {
+//        // Store the user's message in a temporary variable
+//        let userMessage = currentMessage
+//
+//        // Add the user's message to the chat
+//        messages.append(ChatMessage(message: userMessage, isUser: true))
+//
+//        currentMessage = ""
+//
+//        // Call the AI chat API and add the AI's response to the messages array
+//        AIChatAPI.getAIResponse(input: userMessage) { response in
+//            messages.append(ChatMessage(message: response, isUser: false))
+//        }
+//    }
+    
+    func sendMessage(userId: Int, content: String) {
+        let url = URL(string: "http://localhost:3000/send_message")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json: [String: Any] = ["user_id": userId, "content": content]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print(json)
+                    if let responseText = json["response_text"] as? String {
+                        print("Chatbot response: \(responseText)")
+                        // Process the chatbot response
+                    }
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }.resume()
+    }
+    
+    func getMessages(userId: Int) {
+        let url = URL(string: "http://localhost:3000/get_messages?user_id=\(userId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print(json)
+                    if let messages = json["messages"] as? [[String: Any]] {
+                        print("Messages: \(messages)")
+                        // Process the conversation messages
+                    }
+                }
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }.resume()
+    }
+
+
 }
 
 struct ContentView_Previews: PreviewProvider {
