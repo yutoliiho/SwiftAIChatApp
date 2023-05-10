@@ -8,7 +8,7 @@
 import Foundation
 
 class AIChatAPI {
-    private static let apiKey = "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"
+    private static let apiKey = "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"
     private static let apiUrl = "https://api.openai.com/v1/completions"
    // "https://api.openai.com/v1/engines/davinci/completions"
     

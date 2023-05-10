@@ -33,7 +33,8 @@ struct ChatInputView: View {
 
 struct ChatInputView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatInputView(message: .constant(""), sendAction: {})
+         ChatInputView(message: .constant(""), sendAction: {})
+        
     }
 }
 

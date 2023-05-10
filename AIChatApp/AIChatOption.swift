@@ -11,5 +11,6 @@ struct AIChatOption: Identifiable {
     let name: String
     let description: String
     let profileImage: String // New property for the profile picture
+    let chatbotId: Int // Add this line for chatbotId
 }
 
