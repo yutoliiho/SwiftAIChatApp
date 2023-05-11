@@ -11,6 +11,7 @@ import SwiftUI
 struct MenuView: View {
     @State private var showSecretView: Bool = false
     @State private var showUserProfileView: Bool = false
+    @ObservedObject var userSession: UserSession
     
     var body: some View {
         VStack {
@@ -44,15 +45,15 @@ struct MenuView: View {
             NavigationLink(destination: SecretView(), isActive: $showSecretView) {
                 EmptyView()
             }.hidden()
-            NavigationLink(destination: UserProfileView(), isActive: $showUserProfileView) {
-                EmptyView()
-            }.hidden()
+            NavigationLink(destination: UserProfileView(userSession: userSession), isActive: $showUserProfileView) {
+                    EmptyView()
+                }.hidden()
         }
     }
 }
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        MenuView(userSession: UserSession())
     }
 }

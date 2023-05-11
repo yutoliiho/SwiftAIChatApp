@@ -10,6 +10,7 @@
 		6F0049A92A0C9EF40056E289 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0049A82A0C9EF40056E289 /* MenuView.swift */; };
 		6F0049AC2A0C9FDF0056E289 /* SecretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0049AB2A0C9FDF0056E289 /* SecretView.swift */; };
 		6F0049AE2A0C9FF00056E289 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0049AD2A0C9FF00056E289 /* UserProfileView.swift */; };
+		6F0049B12A0CADE30056E289 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0049B02A0CADE30056E289 /* UserSession.swift */; };
 		6F397CC72A06621E006E3583 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F397CC62A06621E006E3583 /* RegistrationView.swift */; };
 		6F6B938E29F9297400DFAA9B /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B938D29F9297400DFAA9B /* ChatInputView.swift */; };
 		6F6B939029F929E100DFAA9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B938F29F929E100DFAA9B /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 		6F0049A82A0C9EF40056E289 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6F0049AB2A0C9FDF0056E289 /* SecretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretView.swift; sourceTree = "<group>"; };
 		6F0049AD2A0C9FF00056E289 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		6F0049B02A0CADE30056E289 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		6F397CC62A06621E006E3583 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		6F6B938D29F9297400DFAA9B /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		6F6B938F29F929E100DFAA9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			path = Menus;
 			sourceTree = "<group>";
 		};
+		6F0049AF2A0CADDA0056E289 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F0049B02A0CADE30056E289 /* UserSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6FFD5C6E29F9275900BD1567 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		6FFD5C7929F9275900BD1567 /* AIChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				6F0049AF2A0CADDA0056E289 /* Models */,
 				6F0049AA2A0C9F4C0056E289 /* Menus */,
 				6FFD5C7A29F9275900BD1567 /* AIChatAppApp.swift */,
 				6FFD5C7E29F9275C00BD1567 /* Assets.xcassets */,
@@ -195,6 +206,7 @@
 				6F0049AC2A0C9FDF0056E289 /* SecretView.swift in Sources */,
 				6FFD5C8F29F9291F00BD1567 /* ChatView.swift in Sources */,
 				6F6B93A129FB38BD00DFAA9B /* ProfileHeaderView.swift in Sources */,
+				6F0049B12A0CADE30056E289 /* UserSession.swift in Sources */,
 				6F6B939929F9D77300DFAA9B /* AIChatOptionsData.swift in Sources */,
 				6F0049AE2A0C9FF00056E289 /* UserProfileView.swift in Sources */,
 				6F6B939729F9D73500DFAA9B /* AIChatOption.swift in Sources */,

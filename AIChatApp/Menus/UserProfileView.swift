@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct UserProfileView: View {
+    @ObservedObject var userSession: UserSession
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -20,6 +21,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView()
+        UserProfileView(userSession: UserSession())
     }
 }

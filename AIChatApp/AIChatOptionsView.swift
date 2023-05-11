@@ -12,7 +12,8 @@ struct AIChatOptionsView: View {
     let aiChatOptions: [AIChatOption]
     @State private var showRegistrationView: Bool = false //true
     @State private var userId: Int?
-               
+    @StateObject private var userSession = UserSession()
+    
     var body: some View {
         NavigationView {
             List(aiChatOptions) { option in
@@ -65,24 +66,23 @@ struct AIChatOptionsView: View {
                         
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    MenuView()
+                    MenuView(userSession: userSession)
                 }
             }
             
             
         }
         .sheet(isPresented: $showRegistrationView) {
-            RegistrationView { registeredUserId in
-                registerUser(username: "", onRegistered: { userId in
-                    self.userId = userId
-                    showRegistrationView = false
-                })
-            }
+            RegistrationView(showRegistrationView: $showRegistrationView, onRegistered: { registeredUserId in
+                userSession.userId = registeredUserId
+            }, userSession: userSession)
         }
     }
 }
 
-func registerUser(username: String, onRegistered: @escaping (Int) -> Void) {
+// func registerUser(username: String, userSession: UserSession, onRegistered: @escaping () -> Void) {
+func registerUser(username: String, userSession: UserSession, onRegistered: @escaping (Int) -> Void) {
+
     let url = URL(string: "https://python-chatapp-3.herokuapp.com/register")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
@@ -103,6 +103,7 @@ func registerUser(username: String, onRegistered: @escaping (Int) -> Void) {
                 if let userId = json["user_id"] as? Int {
                     print("User registered with ID: \(userId)")
                     DispatchQueue.main.async {
+                        userSession.userId = userId
                         onRegistered(userId)
                     }
                 }
