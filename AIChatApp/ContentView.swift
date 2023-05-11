@@ -10,10 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     let aiChatOption: AIChatOption
-    let chatbotId: Int 
-    @State private var messages: [ChatMessage] = []    
+    let chatbotId: Int
+    let userId: Int
+    @State private var messages: [ChatMessage] = []
     @State private var currentMessage: String = ""
-    @State private var userId: Int?
     
     var body: some View {
         VStack {
@@ -28,14 +28,13 @@ struct ContentView: View {
             ChatView(messages: messages)
             
             ChatInputView(message: $currentMessage, sendAction: {
-                if let userId = userId {
-                    self.sendMessage(userId: userId, content: self.currentMessage, chatbotId: self.chatbotId) // Pass chatbotId here
-                }
+                self.sendMessage(userId: userId, content: self.currentMessage, chatbotId: self.chatbotId) // No need to check for userId existence
             })
         }
     }
 
     func sendMessage(userId: Int, content: String, chatbotId: Int) {
+        print("userId 37: \(userId)")
         let url = URL(string: "https://python-chatapp-3.herokuapp.com/send_message")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -105,6 +104,6 @@ struct ContentView_Previews: PreviewProvider {
         let sampleOption = AIChatOption(name: "Friendly AI", description: "A friendly AI that loves to chat.", profileImage: "alex_auchter_img", chatbotId: 1)
 
         // Pass the sample option to ContentView
-        ContentView(aiChatOption: sampleOption,chatbotId: 1)
+        ContentView(aiChatOption: sampleOption,chatbotId: 1, userId: 1)
     }
 }

@@ -10,24 +10,22 @@ import SwiftUI
 
 struct AIChatOptionsView: View {
     let aiChatOptions: [AIChatOption]
-    @State private var showRegistrationView: Bool = true
+    @State private var showRegistrationView: Bool = false //true
     @State private var userId: Int?
-    
+               
     var body: some View {
         NavigationView {
             List(aiChatOptions) { option in
                 if option.name == "Alexander Auchter" {
                     NavigationLink(destination:ContentView(
-                        aiChatOption: option, chatbotId: option.chatbotId)) {
+                        aiChatOption: option, chatbotId: option.chatbotId, userId: userId ?? -1)) {
                         HStack {
-                            // Display the profile picture
                             Image("alex_auchter_img")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 60, height: 60)
+                                .frame(width: 100, height: 300)
                                 .clipShape(Circle())
-                            
-                            // Display the name and description
+                                                    
                             VStack(alignment: .leading) {
                                 Text(option.name)
                                     .font(.headline)
@@ -40,14 +38,15 @@ struct AIChatOptionsView: View {
                 }
                 if option.name == "Amber Wang" {
                     NavigationLink(destination: ContentView(
-                        aiChatOption: option, chatbotId: option.chatbotId)) {
+                        aiChatOption: option, chatbotId: option.chatbotId, userId: userId ?? -1)) {
                         HStack {
                             // Display the profile picture
                             Image("amber_wang_img")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 60, height: 60)
+                                .frame(width: 100, height: 300)
                                 .clipShape(Circle())
+                            
                             
                             // Display the name and description
                             VStack(alignment: .leading) {
@@ -61,18 +60,29 @@ struct AIChatOptionsView: View {
                     }
                 }
             }
-            .navigationTitle("Messages")
+            .navigationTitle("Dirtycat")
+            .padding()
+                        
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    MenuView()
+                }
+            }
+            
+            
         }
         .sheet(isPresented: $showRegistrationView) {
             RegistrationView { registeredUserId in
-                userId = registeredUserId
-                showRegistrationView = false
+                registerUser(username: "", onRegistered: { userId in
+                    self.userId = userId
+                    showRegistrationView = false
+                })
             }
         }
     }
 }
 
-func registerUser(username: String) {
+func registerUser(username: String, onRegistered: @escaping (Int) -> Void) {
     let url = URL(string: "https://python-chatapp-3.herokuapp.com/register")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
@@ -90,9 +100,11 @@ func registerUser(username: String) {
         do {
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 print(json)
-                if let userId = json["user_id"] as? Int {                    
+                if let userId = json["user_id"] as? Int {
                     print("User registered with ID: \(userId)")
-                    // Save the user ID and username for further use
+                    DispatchQueue.main.async {
+                        onRegistered(userId)
+                    }
                 }
             }
         } catch {

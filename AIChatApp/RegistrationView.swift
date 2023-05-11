@@ -20,7 +20,7 @@ struct RegistrationView: View {
                 .padding()
             
             Button(action: {
-                registerUser(username: username)
+                registerUser(username: username, onRegistered: onRegistered)
             }, label: {
                 Text("Register")
             })
